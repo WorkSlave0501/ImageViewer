@@ -83,7 +83,7 @@ namespace ImageViewer
         /// <summary>
         /// 設定ウィンドウの終了処理
         /// </summary>
-        public void fnc_CloseSetting()
+        public void fnc_CloseWindow()
         {
             //ページリストをクリア
             list_Page.Clear();

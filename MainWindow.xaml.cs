@@ -220,9 +220,6 @@ namespace ImageViewer
             //複数ファイル選択が可能か否か
             browser.Multiselect = true;
 
-            //ファイル形式フィルタ設定
-            //browser.Filters.Add(new CommonFileDialogFilter("すべてのファイル", "*.*"));
-
             //タイトル設定
             browser.Title = "再生ファイル選択";
 
@@ -283,7 +280,7 @@ namespace ImageViewer
         /// <summary>
         /// 設定画面を開く(表示する)。
         /// </summary>
-        public void fnc_OpenSetting()
+        private void fnc_OpenSetting()
         {
             //設定ウィンドウが存在する場合
             if (sWindow != null)
@@ -352,9 +349,6 @@ namespace ImageViewer
             {
                 foreach (ImageWindow iwnd in list_iWindow)
                 {
-                    //コンフィグデータを設定する。
-                    iwnd.fnc_iWndValueToConfig();
-
                     //画像ウィンドウを全て終了させる。
                     iwnd.fnc_CloseWindow();
                 }
@@ -378,7 +372,7 @@ namespace ImageViewer
             //設定ウィンドウを削除する。
             if (sWindow != null)
             {
-                sWindow.fnc_CloseSetting();
+                sWindow.fnc_CloseWindow();
             }
             else
             {

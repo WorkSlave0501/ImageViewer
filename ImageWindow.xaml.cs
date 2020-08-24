@@ -575,7 +575,7 @@ namespace ImageViewer
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public bool fnc_StartbyDrop(string[] files)
+        private bool fnc_StartbyDrop(string[] files)
         {
             bool emptyPath = true;  //true:空/false:ファイルパス有り
             string[] filePath = null;      //フォルダ内のファイルパス
@@ -768,7 +768,7 @@ namespace ImageViewer
                 //Escキー：ウィンドウを閉じる
                 case Key.Escape:
                     //画像ウィンドウ終了処理
-                    fnc_CloseProcess();
+                    fnc_CloseWindow();
                     break;
                 default:
                     break;
@@ -782,7 +782,7 @@ namespace ImageViewer
         /// <summary>
         /// 全画像ウィンドウを非表示にする
         /// </summary>
-        public void fnc_DodgeOyaFla()
+        private void fnc_DodgeOyaFla()
         {
             //全画像ウィンドウの表示/非表示を切り替える。
             foreach (ImageWindow iwnd in ref_list_iWindow)
@@ -813,13 +813,22 @@ namespace ImageViewer
         /// <summary>
         /// 画像ウィンドウ終了処理
         /// </summary>
-        private void fnc_CloseProcess()
+        public void fnc_CloseWindow()
         {
-            //スライドショーを停止させる。
+            //スライドショーを停止する。
             fnc_StopSlideshow();
 
-            //画像ウィンドウ終了処理
-            fnc_CloseWindow();
+            //画像ウィンドウ情報をコンフィグデータに設定する。
+            fnc_iWndValueToConfig();
+
+            //表示画像クリア
+            fnc_ClearImage();
+
+            //ファイルパスリストを削除する。
+            this.list_filePath.Clear();
+
+            //画像ウィンドウを閉じる。
+            this.Close();
 
             //メインの持つ画像ウィンドウリストから自分を削除する。
             ref_list_iWindow.Remove(this);
@@ -831,7 +840,7 @@ namespace ImageViewer
         /// <summary>
         /// 画像ウィンドウ情報をコンフィグデータに設定する。
         /// </summary>
-        public void fnc_iWndValueToConfig()
+        private void fnc_iWndValueToConfig()
         {
             //各種コンフィグデータを設定する。
             ref_conData.WindowHeight = this.Height;
@@ -856,21 +865,6 @@ namespace ImageViewer
             {
                 ref_conData.List_FilePath.Add(fp);
             }
-        }
-
-        /// <summary>
-        /// 画像ウィンドウ終了処理
-        /// </summary>
-        public void fnc_CloseWindow()
-        {
-            //表示画像クリア
-            fnc_ClearImage();
-
-            //ファイルパスリストを削除する。
-            this.list_filePath.Clear();
-
-            //画像ウィンドウを閉じる。
-            this.Close();
         }
 
         /// <summary>
@@ -907,7 +901,7 @@ namespace ImageViewer
         /// <summary>
         /// スライドショーを開始する。
         /// </summary>
-        public void fnc_PlaySlideshow()
+        private void fnc_PlaySlideshow()
         {
             //スライドショー：開始
             slideShowState = true;
@@ -919,7 +913,7 @@ namespace ImageViewer
         /// <summary>
         /// スライドショーを停止する。
         /// </summary>
-        public void fnc_StopSlideshow()
+        private void fnc_StopSlideshow()
         {
             //スライドショー：停止
             slideShowState = false;
@@ -931,7 +925,7 @@ namespace ImageViewer
         /// <summary>
         /// 画像ウィンドウの背景を切り替える
         /// </summary>
-        public void fnc_SwitchBackGrnd()
+        private void fnc_SwitchBackGrnd()
         {
             if (ref_bindData.iwndBackGrnd == "Transparent")
             {
@@ -1031,13 +1025,19 @@ namespace ImageViewer
             movieState = PlayState.PLAYING;
         }
 
-        // ウィンドウアクティブ時のイベントハンドラ
+        /// <summary>
+        /// ウィンドウアクティブ時のイベントハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void hnd_Activated(object sender, EventArgs e)
         {
             fnc_SettingTarget();
         }
 
-        // アクティブウィンドウを設定ウィンドウの対象にする。
+        /// <summary>
+        /// アクティブウィンドウを設定ウィンドウの対象にする。
+        /// </summary>
         private void fnc_SettingTarget()
         {
             ref_sWindow.fnc_BindingSlide(ref_bindData);
