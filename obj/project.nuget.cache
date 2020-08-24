@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "dgSpecHash": "/1JVRuVvEuEYh4c8+sXd09dRXSOMky3QFaygLDPXyvv6AQesRGRgkXvrn32hSwwBH308mlL2v/0ZnakwY5GRUQ==",
+  "success": true,
+  "projectFilePath": "C:\\work\\kawaratani\\WPFpractice\\ImageViewer\\ImageViewer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Logical\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\hardcodet.notifyicon.wpf.netcore\\1.0.13\\hardcodet.notifyicon.wpf.netcore.1.0.13.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\materialdesigncolors\\1.2.6\\materialdesigncolors.1.2.6.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\materialdesignthemes\\3.1.3\\materialdesignthemes.3.1.3.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\materialdesignthemes.mahapps\\0.1.4\\materialdesignthemes.mahapps.0.1.4.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\windowsapicodepack-core\\1.1.2\\windowsapicodepack-core.1.1.2.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\windowsapicodepack-shell\\1.1.1\\windowsapicodepack-shell.1.1.1.nupkg.sha512",
+    "C:\\Users\\Logical\\.nuget\\packages\\wpfanimatedgif\\2.0.0\\wpfanimatedgif.2.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "パッケージ 'WindowsAPICodePack-Core 1.1.2' はプロジェクトのターゲット フレームワーク '.NETCoreApp,Version=v3.1' ではなく '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' を使用して復元されました。このパッケージは、使用しているプロジェクトとの完全な互換性がない可能性があります。",
+      "libraryId": "WindowsAPICodePack-Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "パッケージ 'WindowsAPICodePack-Shell 1.1.1' はプロジェクトのターゲット フレームワーク '.NETCoreApp,Version=v3.1' ではなく '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' を使用して復元されました。このパッケージは、使用しているプロジェクトとの完全な互換性がない可能性があります。",
+      "libraryId": "WindowsAPICodePack-Shell",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

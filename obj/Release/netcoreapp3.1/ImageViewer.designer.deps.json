@@ -1,0 +1,196 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ControlzEx/4.3.0": {
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.19",
+          "System.Text.Json": "4.7.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/ControlzEx.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.3.0.108"
+          }
+        }
+      },
+      "Hardcodet.NotifyIcon.Wpf.NetCore/1.0.13": {
+        "runtime": {
+          "lib/netcoreapp3.1/Hardcodet.Wpf.TaskbarNotification.dll": {
+            "assemblyVersion": "1.0.13.0",
+            "fileVersion": "1.0.13.0"
+          }
+        }
+      },
+      "MahApps.Metro/2.0.0": {
+        "dependencies": {
+          "ControlzEx": "4.3.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MahApps.Metro.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.894"
+          }
+        }
+      },
+      "MaterialDesignColors/1.2.6": {
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignColors.dll": {
+            "assemblyVersion": "1.2.6.1513",
+            "fileVersion": "1.2.6.1513"
+          }
+        }
+      },
+      "MaterialDesignThemes/3.1.3": {
+        "dependencies": {
+          "MaterialDesignColors": "1.2.6"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "3.1.3.1513",
+            "fileVersion": "3.1.3.1513"
+          }
+        }
+      },
+      "MaterialDesignThemes.MahApps/0.1.4": {
+        "dependencies": {
+          "MahApps.Metro": "2.0.0",
+          "MaterialDesignColors": "1.2.6",
+          "MaterialDesignThemes": "3.1.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignThemes.MahApps.dll": {
+            "assemblyVersion": "0.1.4.1513",
+            "fileVersion": "0.1.4.1513"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.19.35512"
+          }
+        }
+      },
+      "System.Text.Json/4.7.2": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {
+            "assemblyVersion": "4.0.1.2",
+            "fileVersion": "4.700.20.21406"
+          }
+        }
+      },
+      "WindowsAPICodePack-Core/1.1.2": {
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {
+            "assemblyVersion": "1.1.2.0",
+            "fileVersion": "1.1.2.0"
+          }
+        }
+      },
+      "WindowsAPICodePack-Shell/1.1.1": {
+        "dependencies": {
+          "WindowsAPICodePack-Core": "1.1.2"
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "WpfAnimatedGif/2.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/WpfAnimatedGif.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ControlzEx/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I7PKmQNIMO9+s4s50WXOApotnyEKL9G8vvYrZY7CLe7nufXwRSv+vWPrd4BYwZDQiWHbBwnXsC8zUPgPnEWr6g==",
+      "path": "controlzex/4.3.0",
+      "hashPath": "controlzex.4.3.0.nupkg.sha512"
+    },
+    "Hardcodet.NotifyIcon.Wpf.NetCore/1.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3J1JylAOFIBbpcGsnAj1Me2rFLLUut17vHz08I1d6VXFijuYwykh9og8VwW4XVItzCPK9TtbsBz93JJqInRjog==",
+      "path": "hardcodet.notifyicon.wpf.netcore/1.0.13",
+      "hashPath": "hardcodet.notifyicon.wpf.netcore.1.0.13.nupkg.sha512"
+    },
+    "MahApps.Metro/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-btjlE3Q8iebJB+4TBJZLcJBQZshKYqfkcATj9AS8veq4a506uE71NOTE1OSoavOJ70xasBjcdc+VuN17l+kIqw==",
+      "path": "mahapps.metro/2.0.0",
+      "hashPath": "mahapps.metro.2.0.0.nupkg.sha512"
+    },
+    "MaterialDesignColors/1.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3x9k3T0wUxIGg5C1D6JQQXw/N549eHhIsiyF791VjgK+8sZU8ywpFaZwbd0KArQJiFJ7Ud14Vgl/63E6O86EFw==",
+      "path": "materialdesigncolors/1.2.6",
+      "hashPath": "materialdesigncolors.1.2.6.nupkg.sha512"
+    },
+    "MaterialDesignThemes/3.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pyB9HqalbdGmX9iGUIjb82zgtQ5zUCfRqZG/w6AV3+oAI3WMEgzAwzA+NfIlzSPQx4iUz+Xl/O6HcsXoxuuM0g==",
+      "path": "materialdesignthemes/3.1.3",
+      "hashPath": "materialdesignthemes.3.1.3.nupkg.sha512"
+    },
+    "MaterialDesignThemes.MahApps/0.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wuFaLzbCgRDce9n186cJgxoMtooB7hIL1VsGufM9hLZnrDgZ+5N5KOo6nI9hkkj77PTgfjcoZXS4zUqfca0ZGw==",
+      "path": "materialdesignthemes.mahapps/0.1.4",
+      "hashPath": "materialdesignthemes.mahapps.0.1.4.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5sPWkbqImc2t1aQwIfJcKsUo7tOg1Tr8+6xVzZJB56Nzt4u9NlpcLofgdX/aRYpPKdWDA3U23Akw1KQzU5e82g==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.19",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512"
+    },
+    "System.Text.Json/4.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
+      "path": "system.text.json/4.7.2",
+      "hashPath": "system.text.json.4.7.2.nupkg.sha512"
+    },
+    "WindowsAPICodePack-Core/1.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tGEkicg61OvHHuFyD4Vu8H4R0q5H1dlpN6fqjdYG+MGIp16znEVo/I+LhMTx3nKpM46reCcE6oC8fJqVJix2Bg==",
+      "path": "windowsapicodepack-core/1.1.2",
+      "hashPath": "windowsapicodepack-core.1.1.2.nupkg.sha512"
+    },
+    "WindowsAPICodePack-Shell/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CPFamhL3jPo8O6+ErGsLS4LK3DWP5ncxqhbzpPnYkIW9rjatunUij35iTjprbr9mlYR/5Pbguw21MwSmTOKR4g==",
+      "path": "windowsapicodepack-shell/1.1.1",
+      "hashPath": "windowsapicodepack-shell.1.1.1.nupkg.sha512"
+    },
+    "WpfAnimatedGif/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z468xEqg+MSSW30BkbIcwoCQ9E0GiRQxU6L9qYCUmP28fQ79Dq4QSakWm3Dfw8CoRY3xLl3gf1xRfqILSs6/mw==",
+      "path": "wpfanimatedgif/2.0.0",
+      "hashPath": "wpfanimatedgif.2.0.0.nupkg.sha512"
+    }
+  }
+}

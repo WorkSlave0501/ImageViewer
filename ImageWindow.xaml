@@ -1,0 +1,59 @@
+﻿<Window x:Class="ImageViewer.ImageWindow"
+        x:Name="iWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageViewer"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="ImageViewer"
+        Width="240" Height="135"
+        Left="440" Top="250"
+        ShowInTaskbar="False" WindowStyle="None"
+        AllowsTransparency="True" Background="{Binding Path=iwndBackGrnd, Mode=OneWay}"
+        ResizeMode="CanResizeWithGrip"
+        MouseLeftButtonDown="hnd_DragWindow"
+        MouseWheel="hnd_SpinWheel"
+        AllowDrop="True" DragOver="hnd_DragOver" 
+        Drop="hnd_Drop" 
+        KeyDown="hnd_DownKey" 
+        Activated="hnd_Activated">
+    <Grid x:Name="GridEntity" 
+          Background="Transparent" 
+          RenderTransformOrigin="0.5,0.5" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <!--拡縮率-->
+        <Grid.RenderTransform>
+            <ScaleTransform ScaleX="{Binding Path=scaleValue, Mode=OneWay}" 
+                            ScaleY="{Binding Path=scaleValue, Mode=OneWay}"/>
+        </Grid.RenderTransform>
+        <!--動画,音楽-->
+        <MediaElement x:Name="movie" Grid.ColumnSpan="3" AllowDrop="True" 
+                      MediaEnded="hnd_MediaEnded" 
+                      MediaOpened="hnd_MediaStarted"/>
+        <!--gif画像-->
+        <Image x:Name="img_gif" Grid.ColumnSpan="3"
+               gif:ImageBehavior.AnimatedSource="{Binding Path=gifPath, Mode=OneWay}"
+               AllowDrop="True"/>
+        <!--jpg,bmp,png画像-->
+        <Image x:Name="img" Grid.ColumnSpan="3" AllowDrop="True" />
+        <!--マウス操作用の範囲-->
+        <!--前の画像を表示-->
+        <Rectangle x:Name="leftField" Fill="Transparent" Grid.Column="0"
+                   MouseLeftButtonDown="hnd_ClickLeftField" AllowDrop="True"/>
+        <!--次の画像を表示-->
+        <Rectangle x:Name="rightField" Fill="Transparent" Grid.Column="2" 
+                   MouseLeftButtonDown="hnd_ClickRightField" AllowDrop="True"/>
+        <!--ウィンドウ最大化-->
+        <ContentControl MouseDoubleClick="hnd_DClickWindow" Grid.Column="1">
+            <Rectangle x:Name="middleField" Fill="Transparent" Grid.Column="1" 
+                   AllowDrop="True"/>
+        </ContentControl>
+    </Grid>
+</Window>

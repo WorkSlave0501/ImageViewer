@@ -1,0 +1,65 @@
+﻿<Page x:Class="ImageViewer.SettingSlide"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ImageViewer"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="400"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Title="SettingSlide">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone
+            Mode="Custom"
+            Padding="10"
+            CornerRadius="0"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            Margin="0" Background="#FF673AB7">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="0,0,0,0">
+                    <materialDesign:PackIcon Kind="AnimationPlayOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFF4E" Width="50" Height="40" HorizontalAlignment="Center"/>
+                </Button>
+                <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="0,0,0,0"
+                        Click="hnd_Keyicon">
+                    <materialDesign:PackIcon Kind="KeyboardOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFFFF" Width="50" Height="50" HorizontalAlignment="Center"/>
+                </Button>
+                <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="-4,0,0,0"
+                        Click="hnd_Closeicon">
+                    <materialDesign:PackIcon Kind="CloseBoxOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFFFF" Width="50" Height="38" HorizontalAlignment="Center"/>
+                </Button>
+                <TextBlock x:Name="SettingName" Text="Slideshow" Foreground="White" Width="220" Height="44" FontSize="36" VerticalAlignment="Center" TextAlignment="Right" FontWeight="Thin" Margin="-3,0,0,0" />
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Interval" Foreground="Black" Width="Auto" Height="46" FontSize="22" VerticalAlignment="Center" TextAlignment="Left" FontWeight="Thin" Padding="20,10,0,0" />
+            <Slider x:Name="IntervalSlider"
+                TickFrequency="500"
+                IsSnapToTickEnabled="True"
+                Orientation="Horizontal"
+                TickPlacement="BottomRight"
+                Minimum="1000"
+                Maximum="10000"
+                Value="{Binding Path=slideInterval, Mode=TwoWay}"
+                SmallChange="500"
+                Foreground="#FF673AB7" 
+                HorizontalAlignment="Center" 
+                Width="300" />
+            <TextBlock x:Name="SlideValue" Text="{Binding ElementName=IntervalSlider, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="220" Height="80"  FontSize="72" FontWeight="Thin" TextAlignment="Center" Margin="0,10,0,0" />
+            <TextBlock Text="msec" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="30"  FontSize="22" FontWeight="Thin" TextAlignment="Center" Margin="0,0,0,0" />
+        </StackPanel>
+    </Grid>
+</Page>
