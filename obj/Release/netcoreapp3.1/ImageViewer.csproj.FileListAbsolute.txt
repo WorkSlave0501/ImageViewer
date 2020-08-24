@@ -80,3 +80,4 @@ C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.dll
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.pdb
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.genruntimeconfig.cache
+C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.csprojAssemblyReference.cache

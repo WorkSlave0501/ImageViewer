@@ -752,13 +752,17 @@ namespace ImageViewer
                 case Key.D2:
                     fnc_StopSlideshow();
                     break;
-                //設定ウィンドウ表示
-                case Key.K:
-                    fnc_OpenSetting();
-                    break;
                 //ウィンドウ背景切替
-                case Key.T:
+                case Key.B:
                     fnc_SwitchBackGrnd();
+                    break;
+                //音量有無切替
+                case Key.M:
+                    fnc_VolumeSwitch();
+                    break;
+                //設定ウィンドウ表示
+                case Key.S:
+                    fnc_OpenSetting();
                     break;
                 //Spaceキー：表示/非表示を切り替える
                 case Key.Space:
@@ -777,6 +781,23 @@ namespace ImageViewer
             //ルーティングイベント(バブル)の中断
             //※Escキーの2重動作を回避する為。
             e.Handled = true;
+        }
+
+        /// <summary>
+        /// ボリューム有無切替
+        /// </summary>
+        private void fnc_VolumeSwitch()
+        {
+            //ボリューム有り→無し
+            if (movie.Volume != 0.0)
+            {
+                movie.Volume = 0.0;
+            }
+            //ボリューム無し→有り
+            else
+            {
+                movie.Volume = 0.5;
+            }
         }
 
         /// <summary>
