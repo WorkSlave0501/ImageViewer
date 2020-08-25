@@ -349,6 +349,9 @@ namespace ImageViewer
             {
                 foreach (ImageWindow iwnd in list_iWindow)
                 {
+                    //コンフィグデータを設定する。
+                    iwnd.fnc_iWndValueToConfig();
+
                     //画像ウィンドウを全て終了させる。
                     iwnd.fnc_CloseWindow();
                 }

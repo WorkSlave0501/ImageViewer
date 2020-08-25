@@ -772,7 +772,7 @@ namespace ImageViewer
                 //Escキー：ウィンドウを閉じる
                 case Key.Escape:
                     //画像ウィンドウ終了処理
-                    fnc_CloseWindow();
+                    fnc_CloseProcess();
                     break;
                 default:
                     break;
@@ -834,22 +834,13 @@ namespace ImageViewer
         /// <summary>
         /// 画像ウィンドウ終了処理
         /// </summary>
-        public void fnc_CloseWindow()
+        private void fnc_CloseProcess()
         {
-            //スライドショーを停止する。
+            //スライドショーを停止させる。
             fnc_StopSlideshow();
 
-            //画像ウィンドウ情報をコンフィグデータに設定する。
-            fnc_iWndValueToConfig();
-
-            //表示画像クリア
-            fnc_ClearImage();
-
-            //ファイルパスリストを削除する。
-            this.list_filePath.Clear();
-
-            //画像ウィンドウを閉じる。
-            this.Close();
+            //画像ウィンドウ終了処理
+            fnc_CloseWindow();
 
             //メインの持つ画像ウィンドウリストから自分を削除する。
             ref_list_iWindow.Remove(this);
@@ -861,7 +852,7 @@ namespace ImageViewer
         /// <summary>
         /// 画像ウィンドウ情報をコンフィグデータに設定する。
         /// </summary>
-        private void fnc_iWndValueToConfig()
+        public void fnc_iWndValueToConfig()
         {
             //各種コンフィグデータを設定する。
             ref_conData.WindowHeight = this.Height;
@@ -886,6 +877,21 @@ namespace ImageViewer
             {
                 ref_conData.List_FilePath.Add(fp);
             }
+        }
+
+        /// <summary>
+        /// 画像ウィンドウ終了処理
+        /// </summary>
+        public void fnc_CloseWindow()
+        {
+            //表示画像クリア
+            fnc_ClearImage();
+
+            //ファイルパスリストを削除する。
+            this.list_filePath.Clear();
+
+            //画像ウィンドウを閉じる。
+            this.Close();
         }
 
         /// <summary>
