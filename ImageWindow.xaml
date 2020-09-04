@@ -4,25 +4,179 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ImageViewer"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="ImageViewer"
         Width="240" Height="135"
         Left="440" Top="250"
+        Opacity="0"
         ShowInTaskbar="False" WindowStyle="None"
-        AllowsTransparency="True" Background="{Binding Path=iwndBackGrnd, Mode=OneWay}"
+        AllowsTransparency="True" 
+        Background="{Binding Path=iwndBackGrnd, Mode=OneWay}"
+        Topmost="{Binding Path=tMost, Mode=OneWay}"
         ResizeMode="CanResizeWithGrip"
+        AllowDrop="True"
         MouseLeftButtonDown="hnd_DragWindow"
         MouseWheel="hnd_SpinWheel"
-        AllowDrop="True" DragOver="hnd_DragOver" 
+        DragOver="hnd_DragOver" 
         Drop="hnd_Drop" 
         KeyDown="hnd_DownKey" 
-        Activated="hnd_Activated">
+        Activated="hnd_Activated"
+        ContentRendered="hnd_ContentRendered"
+        >
+    <!--リソース-->
+    <Window.Resources>
+        <!--スライダー表示アニメ定義-->
+        <Storyboard x:Key="IndicateBarAnime">
+            <DoubleAnimation
+                Storyboard.TargetName="SeekBar"
+                Storyboard.TargetProperty="Opacity"
+                From="0" To="1"
+                Duration="00:00:00.3" />
+        </Storyboard>
+        <!--スライダー非表示アニメ定義-->
+        <Storyboard x:Key="HideBarAnime">
+            <DoubleAnimation
+                Storyboard.TargetName="SeekBar"
+                Storyboard.TargetProperty="Opacity"
+                From="1" To="0"
+                Duration="00:00:00.3" />
+        </Storyboard>
+
+        <!--ウィンドウ表示アニメ定義-->
+        <Storyboard x:Key="IndicateWindow">
+            <DoubleAnimation
+                Storyboard.TargetName="iWindow"
+                Storyboard.TargetProperty="Opacity"
+                From="0" To="1"
+                Duration="00:00:00.2" />
+        </Storyboard>
+        <!--ウィンドウ非表示アニメ定義-->
+        <Storyboard x:Key="HideWindow">
+            <DoubleAnimation
+                Storyboard.TargetName="iWindow"
+                Storyboard.TargetProperty="Opacity"
+                From="1" To="0"
+                Duration="00:00:00.2" />
+        </Storyboard>
+        
+        <!-- スライダーのスタイル -->
+        <!-- Custom Slider Style -->
+        <SolidColorBrush x:Key="SliderBackgroundColorbrush" Color="#FF222222"/>
+        <SolidColorBrush x:Key="SliderForegroundColorBrush" Color="#FFAAAAAA"/>
+        <SolidColorBrush x:Key="SliderThumbColorBrush" Color="#FF673AB7"/>
+        
+        <!-- つまみ -->
+        <Style x:Key="CustomSliderThumbStyle" TargetType="{x:Type Thumb}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border Width="12" Height="6" CornerRadius="2" 
+                                Background="{StaticResource SliderThumbColorBrush}" 
+                                Margin="-5, 0, -5, 0"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 減少側のレール -->
+        <Style x:Key="CustomSliderDecreaseRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border CornerRadius="2,2,2,2" BorderThickness="0"
+                                Background="{DynamicResource SliderForegroundColorBrush}" 
+                                Margin="-5, 0, -5, 0" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 増加側のレール -->
+        <Style x:Key="CustomSliderIncreaseRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border CornerRadius="0,2,2,0" BorderThickness="0"
+                                Background="{DynamicResource SliderBackgroundColorbrush}" 
+                                Margin="-5, 0, -5, 0" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- スライダー本体部分 -->
+        <Style x:Key="CustomSliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="15, 0, 15, 0"/>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <!-- 横置き -->
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="1" Height="4" Background="Transparent" VerticalAlignment="Center" CornerRadius="2"/>
+                                    <Track Grid.Row="1" x:Name="PART_Track">
+                                        <!-- 減少側のレール -->
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Style="{StaticResource CustomSliderDecreaseRepeatButton}" Command="Slider.DecreaseLarge" Height="6"/>
+                                        </Track.DecreaseRepeatButton>
+                                        <!-- 増加側のレール -->
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Style="{StaticResource CustomSliderIncreaseRepeatButton}" Command="Slider.IncreaseLarge" Height="6"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <!-- つまみ -->
+                                        <Track.Thumb>
+                                            <Thumb Style="{StaticResource CustomSliderThumbStyle}"/>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <!--トリガーイベント-->
+    <Window.Triggers>
+        <!--スライダー表示アニメーション-->
+        <EventTrigger RoutedEvent="Window.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource IndicateBarAnime}" />
+        </EventTrigger>
+        <!--スライダー非表示アニメーション-->
+        <EventTrigger RoutedEvent="Window.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource HideBarAnime}" />
+        </EventTrigger>
+    </Window.Triggers>
+    
     <Grid x:Name="GridEntity" 
           Background="Transparent" 
           RenderTransformOrigin="0.5,0.5" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="3*"/>
@@ -34,26 +188,43 @@
                             ScaleY="{Binding Path=scaleValue, Mode=OneWay}"/>
         </Grid.RenderTransform>
         <!--動画,音楽-->
-        <MediaElement x:Name="movie" Grid.ColumnSpan="3" AllowDrop="True" 
+        <MediaElement x:Name="movie" Grid.ColumnSpan="3" Grid.RowSpan="2"
+                      AllowDrop="True"
+                      Volume="{Binding Path=Volume, Mode=OneWay}"
+                      LoadedBehavior="Manual"
                       MediaEnded="hnd_MediaEnded" 
-                      MediaOpened="hnd_MediaStarted"/>
+                      MediaOpened="hnd_MediaOpened"/>
         <!--gif画像-->
         <Image x:Name="img_gif" Grid.ColumnSpan="3"
                gif:ImageBehavior.AnimatedSource="{Binding Path=gifPath, Mode=OneWay}"
-               AllowDrop="True"/>
+               AllowDrop="True" Grid.RowSpan="2"/>
         <!--jpg,bmp,png画像-->
-        <Image x:Name="img" Grid.ColumnSpan="3" AllowDrop="True" />
+        <Image x:Name="img" Grid.ColumnSpan="3" AllowDrop="True" Grid.RowSpan="2"/>
         <!--マウス操作用の範囲-->
         <!--前の画像を表示-->
         <Rectangle x:Name="leftField" Fill="Transparent" Grid.Column="0"
-                   MouseLeftButtonDown="hnd_ClickLeftField" AllowDrop="True"/>
+                   MouseLeftButtonDown="hnd_ClickLeftField" AllowDrop="True" Grid.RowSpan="2"/>
         <!--次の画像を表示-->
         <Rectangle x:Name="rightField" Fill="Transparent" Grid.Column="2" 
-                   MouseLeftButtonDown="hnd_ClickRightField" AllowDrop="True"/>
+                   MouseLeftButtonDown="hnd_ClickRightField" AllowDrop="True" Grid.RowSpan="2"/>
         <!--ウィンドウ最大化-->
-        <ContentControl MouseDoubleClick="hnd_DClickWindow" Grid.Column="1">
+        <ContentControl MouseDoubleClick="hnd_DClickWindow" Grid.Column="1" Grid.RowSpan="2">
             <Rectangle x:Name="middleField" Fill="Transparent" Grid.Column="1" 
                    AllowDrop="True"/>
         </ContentControl>
+        <!--シークバー-->
+        <Slider x:Name="SeekBar" 
+                Grid.ColumnSpan="3"
+                Grid.Row="1"
+                IsMoveToPointEnabled="True"
+                VerticalAlignment="Center"
+                Minimum="0" Maximum="100"
+                Opacity="0"
+                ValueChanged="hnd_SeekBarValueChanged"
+                Thumb.DragStarted="hnd_SeekBarDragStarted"
+                Thumb.DragCompleted="hnd_SeekBarDragCompleted"
+                KeyDown="hnd_SeekBarKeyDown" 
+                Style="{DynamicResource CustomSliderStyle}">
+        </Slider>
     </Grid>
 </Window>

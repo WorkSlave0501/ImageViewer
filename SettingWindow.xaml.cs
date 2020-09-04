@@ -7,6 +7,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -14,7 +15,7 @@ using System.Windows.Shapes;
 namespace ImageViewer
 {
     /// <summary>
-    /// SettingWindow.xaml の相互作用ロジック
+    /// 設定画面
     /// </summary>
     public partial class SettingWindow : NavigationWindow
     {
@@ -30,40 +31,31 @@ namespace ImageViewer
             get; set;
         }
 
-        //キー設定ページ
-        private SettingKey pageKey
+        //その他設定ページ
+        private SettingVarious pageVarious
         {
             get; set;
         }
 
         //コンストラクタ
-        public SettingWindow()
+        public SettingWindow(int conInterval)
         {
             InitializeComponent();
-        }
-
-        //コンストラクタ
-        public SettingWindow(BindData bdata, ConfigData condata)
-        {
-            InitializeComponent();
-
-            //ウィンドウ表示を非表示で初期化
-            this.Visibility = Visibility.Hidden;
 
             //ページリスト作成
             list_Page = new List<Page>();
 
             //スライドショー設定ページ作成
-            pageSlide = new SettingSlide(bdata, list_Page, this);
+            pageSlide = new SettingSlide(list_Page, this, conInterval);
 
             //ページをリストへ追加
             list_Page.Add(pageSlide);
 
-            //ショートカットキー設定ページ作成
-            pageKey = new SettingKey(list_Page, this);
+            //その他設定ページ作成
+            pageVarious = new SettingVarious(list_Page, this);
 
             //ページをリストへ追加
-            list_Page.Add(pageKey);
+            list_Page.Add(pageVarious);
             
             //1ページ目(スライドショー設定ページ)表示
             Navigate(pageSlide);
@@ -97,21 +89,36 @@ namespace ImageViewer
         /// </summary>
         public void fnc_SwitchVisibility_swnd()
         {
-            //表示を非表示にする
-            if (this.Visibility == Visibility.Visible)
+            double tmp_Opacity = 0.0;    //プロパティ：Opacity
+
+            // 設定ウィンドウが非表示
+            if (sWindow.Opacity == 0.0)
             {
-                this.Visibility = Visibility.Hidden;
+                // 表示
+                tmp_Opacity = 1.0;
             }
-            //非表示を表示にする
-            else
+            // 設定ウィンドウが表示
+            else if (sWindow.Opacity != 0.0)
             {
-                this.Visibility = Visibility.Visible;
+                // 非表示
+                tmp_Opacity = 0.0;
             }
+
+            // ウィンドウ表示/非表示アニメーション作成（透明度、アニメーション時間：0.3秒）
+            DoubleAnimation animation = new DoubleAnimation(tmp_Opacity, TimeSpan.FromSeconds(0.3));
+
+            // 設定ウィンドウのOpacity値を0.3秒で0⇔1間で変化させる。
+            sWindow.BeginAnimation(NavigationWindow.OpacityProperty, animation);
         }
 
-        public void fnc_BindingSlide(BindData bdata)
+        /// <summary>
+        /// データバインディングを行う。
+        /// </summary>
+        /// <param name="bdata"></param>
+        public void fnc_BindToPages(BindData bdata)
         {
             pageSlide.fnc_DataBinding(bdata);
+            pageVarious.fnc_DataBinding(bdata);
         }
     }
 }

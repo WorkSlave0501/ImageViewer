@@ -23,7 +23,7 @@
     <Grid>
         <!--タスクバーメニュー-->
         <tb:TaskbarIcon x:Name="tbi"
-                        IconSource="/Resources/ImageViewerIcon.ico"
+                        IconSource="/Resources/ImageViewerIcon4.ico"
                         DoubleClickCommand="{x:Static local:MainWindow.DClickCommand}">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu 
@@ -31,7 +31,6 @@
                     FontFamily="{DynamicResource MaterialDesignFont}">
                     <MenuItem Header="ファイルを開く" Click="hnd_MenuOpenFile"/>
                     <MenuItem Header="フォルダを開く" Click="hnd_MenuOpenFolder"/>
-                    <MenuItem Header="再生リスト"/>
                     <MenuItem Header="設定" Click="hnd_MenuSetting"/>
                     <MenuItem Header="表示/非表示" Click="hnd_MenuSwVisibility"/>
                     <MenuItem Header="終了" Click="hnd_MenuEnd"/>

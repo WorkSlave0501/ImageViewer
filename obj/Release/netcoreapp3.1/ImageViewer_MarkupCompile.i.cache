@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1
 C:\work\kawaratani\WPFpractice\ImageViewer\App.xaml
-51594694435
+51273283792
 
-13803975368
+1391254934
 2091694628769
-ImageWindow.xaml;MainWindow.xaml;SettingKey.xaml;SettingSlide.xaml;SettingWindow.xaml;
+ImageWindow.xaml;MainWindow.xaml;SettingSlide.xaml;SettingVarious.xaml;SettingWindow.xaml;
 
 False
 

@@ -4,14 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>ImageViewerIcon.ico</ApplicationIcon>
+    <ApplicationIcon>ImageViewerIcon4.ico</ApplicationIcon>
     <Authors>Yuki_Kawaratani</Authors>
     <Company></Company>
     <Copyright>Yuki_Kawaratani</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ImageViewerIcon.ico" />
+    <None Remove="Resources\ImageViewerIcon4.ico" />
+    <None Remove="Resources\MUSICbckg.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\ImageViewerIcon.ico" />
+    <Resource Include="Resources\ImageViewerIcon4.ico" />
+    <Resource Include="Resources\MUSICbckg.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +41,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="SettingKey.xaml.cs">
+    <Compile Update="SettingVarious.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -59,7 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="SettingKey.xaml">
+    <Page Update="SettingVarious.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

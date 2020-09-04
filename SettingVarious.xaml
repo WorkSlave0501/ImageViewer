@@ -1,4 +1,4 @@
-﻿<Page x:Class="ImageViewer.SettingSlide"
+﻿<Page x:Class="ImageViewer.SettingVarious"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,20 +11,21 @@
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}"
       Title="SettingSlide">
+    
     <Page.Resources>
         <!--VariousIcon-->
         <!--スライダー表示アニメ定義-->
-        <Storyboard x:Key="VariousToBright">
+        <Storyboard x:Key="SlideToBright">
             <ColorAnimation
-                Storyboard.TargetName="VariousIcon"
+                Storyboard.TargetName="SlideIcon"
                 Storyboard.TargetProperty="Foreground.Color"
                 From="#DDFFFFFF" To="#DDFFFF4E"
                 Duration="00:00:00.3" />
         </Storyboard>
         <!--スライダー非表示アニメ定義-->
-        <Storyboard x:Key="VariousToBase">
+        <Storyboard x:Key="SlideToBase">
             <ColorAnimation
-                Storyboard.TargetName="VariousIcon"
+                Storyboard.TargetName="SlideIcon"
                 Storyboard.TargetProperty="Foreground.Color"
                 From="#DDFFFF4E" To="#DDFFFFFF"
                 Duration="00:00:00.3" />
@@ -48,7 +49,7 @@
                 Duration="00:00:00.3" />
         </Storyboard>
     </Page.Resources>
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -61,30 +62,27 @@
             materialDesign:ShadowAssist.ShadowDepth="Depth3"
             Margin="0" Background="#FF673AB7">
             <StackPanel Orientation="Horizontal">
-            
-                <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
-                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                        Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="0,0,0,0">
-                    <materialDesign:PackIcon x:Name="SlideIcon" Kind="AnimationPlayOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFF4E" Width="50" Height="40" HorizontalAlignment="Center"/>
-                </Button>
-                
                 <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
                         materialDesign:ShadowAssist.ShadowDepth="Depth0"
                         Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="0,0,0,0"
-                        Click="hnd_Keyicon">
-                    <materialDesign:PackIcon x:Name="VariousIcon" Kind="ShapeOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFFFF" Width="50" Height="40" HorizontalAlignment="Center"/>
+                        Click="hnd_Slideicon">
+                    <materialDesign:PackIcon x:Name="SlideIcon" Kind="AnimationPlayOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFFFF" Width="50" Height="40" HorizontalAlignment="Center"/>
                     <Button.Triggers>
                         <!--アイコン点灯-->
                         <EventTrigger RoutedEvent="Button.MouseEnter">
-                            <BeginStoryboard Storyboard="{StaticResource VariousToBright}" />
+                            <BeginStoryboard Storyboard="{StaticResource SlideToBright}" />
                         </EventTrigger>
                         <!--アイコン消灯-->
                         <EventTrigger RoutedEvent="Button.MouseLeave">
-                            <BeginStoryboard Storyboard="{StaticResource VariousToBase}" />
+                            <BeginStoryboard Storyboard="{StaticResource SlideToBase}" />
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
-                
+                <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="0,0,0,0">
+                    <materialDesign:PackIcon Kind="ShapeOutline" VerticalAlignment="Center" VerticalContentAlignment="Top" Foreground="#DDFFFF4E" Width="50" Height="40" HorizontalAlignment="Center"/>
+                </Button>
                 <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
                         materialDesign:ShadowAssist.ShadowDepth="Depth0"
                         Background="#FF673AB7" Width="50" Height="50" BorderBrush="#FF673AB7" Padding="-4,0,0,0"
@@ -101,28 +99,47 @@
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
-                
-                <TextBlock x:Name="SettingName" Text="Slideshow" Foreground="White" Width="220" Height="44" FontSize="36" VerticalAlignment="Center" TextAlignment="Right" FontWeight="Thin" Margin="-3,0,0,0" />
-            
+                <TextBlock x:Name="SettingName" Text="Various" Foreground="White" Width="220" Height="44" FontSize="36" VerticalAlignment="Center" TextAlignment="Right" FontWeight="Thin" Margin="-3,0,0,0" />
             </StackPanel>
         </materialDesign:ColorZone>
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="Interval" Foreground="Black" Width="Auto" Height="46" FontSize="22" VerticalAlignment="Center" TextAlignment="Left" FontWeight="Thin" Padding="20,10,0,0" />
-            <Slider x:Name="IntervalSlider"
-                TickFrequency="500"
-                IsSnapToTickEnabled="True"
-                IsMoveToPointEnabled="True"
-                Orientation="Horizontal"
-                TickPlacement="BottomRight"
-                Minimum="1000"
-                Maximum="10000"
-                Value="{Binding Path=slideInterval, Mode=TwoWay}"
-                SmallChange="500"
-                Foreground="#FF673AB7" 
-                HorizontalAlignment="Center" 
-                Width="300" />
-            <TextBlock x:Name="SlideValue" Text="{Binding ElementName=IntervalSlider, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="220" Height="80"  FontSize="72" FontWeight="Thin" TextAlignment="Center" Margin="0,10,0,0" />
-            <TextBlock Text="msec" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="30"  FontSize="22" FontWeight="Thin" TextAlignment="Center" Margin="0,0,0,0" />
-        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,0,0,-210">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Background" Foreground="Black" Width="Auto" Height="40" FontSize="30" VerticalAlignment="Center" TextAlignment="Left" FontWeight="Thin" Margin="60,0,0,0" HorizontalAlignment="Left" />
+            <CheckBox
+            Grid.Row="0" Grid.Column="1"
+            IsChecked="{Binding Path=check_iwndBackGrnd, Mode=TwoWay}"
+            materialDesign:CheckBoxAssist.CheckBoxSize="35"
+            Background="#FF673AB7" BorderBrush="#FF673AB7"
+            HorizontalAlignment="Center" VerticalAlignment="Center" 
+            Margin="-30,0,0,0" Checked="hnd_CheckBg" 
+            Unchecked="hnd_UncheckBg">
+            </CheckBox>
+            
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Volume" Foreground="Black" Width="Auto" Height="40" FontSize="30" VerticalAlignment="Center" TextAlignment="Left" FontWeight="Thin" Margin="60,0,0,0" HorizontalAlignment="Left"/>
+            <CheckBox
+            Grid.Row="1" Grid.Column="1"
+            IsChecked="{Binding Path=check_Volume, Mode=TwoWay}"
+            materialDesign:CheckBoxAssist.CheckBoxSize="35"
+            Background="#FF673AB7" BorderBrush="#FF673AB7"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Margin="-30,0,0,0" Checked="hnd_CheckVol" Unchecked="hnd_UncheckVol"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Topmost" Foreground="Black" Width="Auto" Height="40" FontSize="30" VerticalAlignment="Center" TextAlignment="Left" FontWeight="Thin" Margin="60,0,0,0" HorizontalAlignment="Left"/>
+            <CheckBox
+            Grid.Row="2" Grid.Column="1"
+            IsChecked="{Binding Path=check_tMost, Mode=TwoWay}"
+            materialDesign:CheckBoxAssist.CheckBoxSize="35"
+            Background="#FF673AB7" BorderBrush="#FF673AB7"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Margin="-30,0,0,0" Checked="hnd_CheckTmost" Unchecked="hnd_UncheckTmost"/>
+        </Grid>
     </Grid>
 </Page>

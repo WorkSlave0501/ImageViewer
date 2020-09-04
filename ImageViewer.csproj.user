@@ -24,7 +24,7 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SettingKey.xaml">
+    <Page Update="SettingVarious.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SettingSlide.xaml">

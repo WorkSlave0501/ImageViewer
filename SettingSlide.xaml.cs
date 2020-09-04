@@ -13,16 +13,19 @@ using System.Windows.Shapes;
 
 namespace ImageViewer
 {
+    /// <summary>
+    /// スライドショー設定画面
+    /// </summary>
     public partial class SettingSlide : Page
     {
-        //ページリスト参照用
+        // ページリスト参照用
         private List<Page> ref_listPage
         {
             get; set;
         }
 
-        //設定ウィンドウ参照用
-        private SettingWindow ref_settingWindow
+        // 設定ウィンドウ参照用
+        private SettingWindow ref_sWindow
         {
             get;set;
         }
@@ -30,42 +33,31 @@ namespace ImageViewer
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public SettingSlide()
-        {
-            InitializeComponent();
-        }
-
-        /// <summary>
-        /// //コンストラクタ
-        /// </summary>
         /// <param name="data"></param>
         /// <param name="list"></param>
         /// <param name="swnd"></param>
-        public SettingSlide(BindData bdata, List<Page> list, SettingWindow swnd)
+        public SettingSlide(List<Page> list, SettingWindow swnd, int conInterval)
         {
             InitializeComponent();
 
-            //設定データの値をスライダーの初期値として設定する。
-            this.IntervalSlider.Value = bdata.slideInterval;
+            // 設定データの値をスライダーの初期値として設定する。
+            this.IntervalSlider.Value = conInterval;
 
-            //slideValueをバインディングする。
-            fnc_DataBinding(bdata);
-
-            //ページリストを参照
+            // ページリストを参照
             ref_listPage = list;
 
-            //設定画面を参照
-            ref_settingWindow = swnd;
+            // 設定画面を参照
+            ref_sWindow = swnd;
         }
 
         /// <summary>
-        /// ショートカットキーアイコンクリック時のイベントハンドラ
+        /// その他アイコンクリック時のイベントハンドラ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void hnd_Keyicon(object sender, RoutedEventArgs e)
         {
-            //ショートカットキー設定ページへ遷移する。
+            // その他設定ページへ遷移する。
             fnc_ToPageShortcutkey();
         }
 
@@ -74,7 +66,7 @@ namespace ImageViewer
         /// </summary>
         private void fnc_ToPageShortcutkey()
         {
-            // ショートカットキー設定ページ
+            // その他設定ページ
             this.NavigationService.Navigate(ref_listPage[1]);
         }
 
@@ -85,7 +77,7 @@ namespace ImageViewer
         /// <param name="e"></param>
         private void hnd_Closeicon(object sender, RoutedEventArgs e)
         {
-            //設定ページを閉じる。
+            // 設定ページを閉じる。
             fnc_ClosePage();
         }
 
@@ -94,8 +86,8 @@ namespace ImageViewer
         /// </summary>
         private void fnc_ClosePage()
         {
-            //設定ウィンドウを終了(非表示)にする。
-            ref_settingWindow.fnc_SwitchVisibility_swnd();
+            // 設定ウィンドウを終了(非表示)にする。
+            ref_sWindow.fnc_SwitchVisibility_swnd();
         }
 
         /// <summary>

@@ -58,7 +58,6 @@ C:\work\kawaratani\WPFpractice\ImageViewer\bin\Release\netcoreapp3.1\Microsoft.W
 C:\work\kawaratani\WPFpractice\ImageViewer\bin\Release\netcoreapp3.1\WpfAnimatedGif.dll
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageWindow.g.cs
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\MainWindow.g.cs
-C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingKey.g.cs
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingSlide.g.cs
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingWindow.g.cs
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\App.g.cs
@@ -67,7 +66,6 @@ C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\App.baml
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageWindow.baml
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\MainWindow.baml
-C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingKey.baml
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingSlide.baml
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingWindow.baml
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.g.resources
@@ -81,3 +79,5 @@ C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.pdb
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.genruntimeconfig.cache
 C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\ImageViewer.csprojAssemblyReference.cache
+C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingVarious.g.cs
+C:\work\kawaratani\WPFpractice\ImageViewer\obj\Release\netcoreapp3.1\SettingVarious.baml

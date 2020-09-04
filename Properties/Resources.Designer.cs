@@ -63,10 +63,20 @@ namespace ImageViewer.Properties {
         /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Icon ImageViewerIcon {
+        internal static System.Drawing.Icon ImageViewerIcon4 {
             get {
-                object obj = ResourceManager.GetObject("ImageViewerIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("ImageViewerIcon4", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap MUSICbckg {
+            get {
+                object obj = ResourceManager.GetObject("MUSICbckg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
